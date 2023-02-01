@@ -1,7 +1,9 @@
 using StanLogDensityProblems
 using Documenter
 
-DocMeta.setdocmeta!(StanLogDensityProblems, :DocTestSetup, :(using StanLogDensityProblems); recursive=true)
+DocMeta.setdocmeta!(
+    StanLogDensityProblems, :DocTestSetup, :(using StanLogDensityProblems); recursive=true
+)
 
 makedocs(;
     modules=[StanLogDensityProblems],
@@ -14,12 +16,7 @@ makedocs(;
         edit_link="main",
         assets=String[],
     ),
-    pages=[
-        "Home" => "index.md",
-    ],
+    pages=["Home" => "index.md"],
 )
 
-deploydocs(;
-    repo="github.com/sethaxen/StanLogDensityProblems.jl",
-    devbranch="main",
-)
+deploydocs(; repo="github.com/sethaxen/StanLogDensityProblems.jl", devbranch="main")
