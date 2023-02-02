@@ -6,9 +6,9 @@ CurrentModule = StanLogDensityProblems
 
 Documentation for [StanLogDensityProblems](https://github.com/sethaxen/StanLogDensityProblems.jl).
 
-```@index
-```
-
 ```@autodocs
-Modules = [StanLogDensityProblems]
+Modules = [
+    StanLogDensityProblems,
+    isdefined(Base, :get_extension) ? Base.get_extension(StanLogDensityProblems, :PosteriorDBExt) : StanLogDensityProblems.PosteriorDBExt
+]
 ```

@@ -1,5 +1,6 @@
 using StanLogDensityProblems
 using Documenter
+using PosteriorDB  # load extension
 
 DocMeta.setdocmeta!(
     StanLogDensityProblems, :DocTestSetup, :(using StanLogDensityProblems); recursive=true

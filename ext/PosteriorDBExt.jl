@@ -2,7 +2,7 @@ module PosteriorDBExt
 
 using StanLogDensityProblems: StanLogDensityProblems, EXTENSIONS_SUPPORTED
 
-if isdefined(Base, :get_extension)
+if EXTENSIONS_SUPPORTED
     using PosteriorDB: PosteriorDB
 else  # using Requires
     using ..PosteriorDB: PosteriorDB

@@ -1,3 +1,4 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+PosteriorDB = "1c4bc282-d2f5-44f9-b6d1-8c4424a23ad4"
 StanLogDensityProblems = "a545de4d-8dba-46db-9d34-4e41d3f07807"
