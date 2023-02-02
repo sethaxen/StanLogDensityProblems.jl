@@ -1,5 +1,10 @@
 module StanLogDensityProblems
 
-# Write your package code here.
+using BridgeStan: BridgeStan
+using LogDensityProblems: LogDensityProblems
+
+export StanProblem
+
+include("stanproblem.jl")
 
 end
