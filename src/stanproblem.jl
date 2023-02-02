@@ -1,7 +1,8 @@
 """
     StanProblem(model::BridgeStan.StanModel; nan_on_error::Bool=false)
 
-A wrapper for a Stan model with data, implementing the [LogDensityProblems](https://www.tamaspapp.eu/LogDensityProblems.jl/) interface.
+A wrapper for a Stan model with data, implementing the
+[LogDensityProblems](https://www.tamaspapp.eu/LogDensityProblems.jl/) interface.
 
 If `nan_on_error=true`, then any errors from Stan will be suppressed, and `NaN`s will be
 returned.
@@ -21,7 +22,8 @@ Construct a `BridgeStan.StanModel` from a `.stan` file and wrap it as a `StanPro
 `data` should either be a string containing a JSON string literal or a path to a data file
 ending in `.json`. If necessary, the model is compiled.
 
-Remaining `kwargs` are forwarded to [`BridgeStan.StanModel`](https://roualdes.github.io/bridgestan/languages/julia.html#BridgeStan.StanModel).
+Remaining `kwargs` are forwarded to
+[`BridgeStan.StanModel`](https://roualdes.github.io/bridgestan/languages/julia.html#BridgeStan.StanModel).
 
 !!! note
     By default, Stan does not compile the model with multithreading support. If this is
