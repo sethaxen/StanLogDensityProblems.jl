@@ -8,7 +8,7 @@ BridgeStan = "c88b6f0a-829e-4b0b-94b7-f06ab5908f5a"
 LogDensityProblems = "6fdf6af0-433a-55f7-b3ed-c6c6e0b8df7c"
 
 [compat]
-BridgeStan = "1.0.1"
+BridgeStan = "1"
 LogDensityProblems = "1, 2"
 julia = "1.6"
 
