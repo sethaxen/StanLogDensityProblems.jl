@@ -24,6 +24,7 @@ end
             prob = StanProblem(model)
             @test prob isa StanProblem{typeof(model),false}
             @test prob.model === model
+            @test sprint(show, "text/plain", prob) == "StanProblem: regression_model"
 
             prob2 = StanProblem(model; nan_on_error=true)
             @test prob2 isa StanProblem{typeof(model),true}
