@@ -9,3 +9,22 @@
 
 StanLogDensityProblems implements the [LogDensityProblems API](https://www.tamaspapp.eu/LogDensityProblems.jl/) for [Stan](https://mc-stan.org/) models using [BridgeStan](https://roualdes.github.io/bridgestan/).
 For easily benchmarking inference algorithms, StanLogDensityProblems also integrates with [PosteriorDB](https://github.com/sethaxen/PosteriorDB.jl).
+
+For example, here we sample a Stan model from PosteriorDB using [DynamicHMC](https://www.tamaspapp.eu/DynamicHMC.jl):
+
+```julia
+julia> using BridgeStan, DynamicHMC, PosteriorDB, Random, StanLogDensityProblems
+
+julia> pdb = PosteriorDB.database()
+PosteriorDatabase(...)
+
+julia> post = PosteriorDB.posterior(pdb, "dogs-dogs")
+Posterior: dogs-dogs
+
+julia> prob = StanProblem(post)
+StanProblem: dogs_model
+
+julia> rng = Random.default_rng();
+
+julia> result = mcmc_with_warmup(rng, prob, 1_000; reporter=NoProgressReport());
+```
