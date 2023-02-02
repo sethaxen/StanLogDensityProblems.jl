@@ -4,7 +4,8 @@ CurrentModule = StanLogDensityProblems
 
 # StanLogDensityProblems
 
-Documentation for [StanLogDensityProblems](https://github.com/sethaxen/StanLogDensityProblems.jl).
+StanLogDensityProblems implements the [LogDensityProblems API](https://www.tamaspapp.eu/LogDensityProblems.jl/) for [Stan](https://mc-stan.org/) models using [BridgeStan](https://roualdes.github.io/bridgestan/).
+For easily benchmarking inference algorithms, StanLogDensityProblems also integrates with [PosteriorDB](https://github.com/sethaxen/PosteriorDB.jl).
 
 ```@autodocs
 Modules = [
