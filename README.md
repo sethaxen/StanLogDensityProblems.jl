@@ -21,7 +21,7 @@ PosteriorDatabase(...)
 julia> post = PosteriorDB.posterior(pdb, "dogs-dogs")
 Posterior: dogs-dogs
 
-julia> prob = StanProblem(post)
+julia> prob = StanProblem(post, ".")
 StanProblem: dogs_model
 
 julia> rng = Random.default_rng();
