@@ -17,6 +17,10 @@ function get_test_model(name; kwargs...)
     return BridgeStan.StanModel(; stan_file, data, kwargs...)
 end
 
+struct NonNumeric{T}
+    x::T
+end
+
 @testset "StanProblem" begin
     @testset "constructors" begin
         @testset "StanProblem(model; kwargs...)" begin
@@ -64,7 +68,7 @@ end
                 end
             end
         end
-        @testset "`nan_on_error=true` avoids errors" begin
+        @testset "`nan_on_error=true` avoids BridgeStan errors" begin
             model = get_test_model("regression")
             prob = StanProblem(model; nan_on_error=false)
             prob2 = StanProblem(model; nan_on_error=true)
@@ -96,6 +100,17 @@ end
                 @test length(grad2) == dim
                 @test all(isnan, hess2)
                 @test size(hess2) == (dim, dim)
+            end
+
+            @testset "conversions errors still thrown" begin
+                x = map(NonNumeric, randn(dim))
+                @test_throws MethodError LogDensityProblems.logdensity(prob2, x)
+                @test_throws MethodError LogDensityProblems.logdensity_and_gradient(
+                    prob2, x
+                )
+                @test_throws MethodError LogDensityProblems.logdensity_gradient_and_hessian(
+                    prob2, x
+                )
             end
         end
     end
