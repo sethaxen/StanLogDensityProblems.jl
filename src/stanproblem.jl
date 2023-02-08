@@ -1,7 +1,7 @@
 """
     StanProblem(model::BridgeStan.StanModel; nan_on_error::Bool=false)
 
-A wrapper for a Stan model with data, implementing the
+A wrapper for an unconstrained Stan model with data, implementing the
 [LogDensityProblems](https://www.tamaspapp.eu/LogDensityProblems.jl/) interface.
 
 If `nan_on_error=true`, then any errors from Stan will be suppressed, and `NaN`s will be
@@ -50,8 +50,9 @@ function LogDensityProblems.logdensity(
     prob::StanProblem{M,nan_on_error}, x
 ) where {M,nan_on_error}
     m = prob.model
+    z = convert(Vector{Float64}, x)
     try
-        return BridgeStan.log_density(m, convert(Vector{Float64}, x))
+        return BridgeStan.log_density(m, z)
     catch
         nan_on_error || rethrow()
         return NaN
@@ -62,8 +63,9 @@ function LogDensityProblems.logdensity_and_gradient(
     prob::StanProblem{M,nan_on_error}, x
 ) where {M,nan_on_error}
     m = prob.model
+    z = convert(Vector{Float64}, x)
     try
-        return BridgeStan.log_density_gradient(m, convert(Vector{Float64}, x))
+        return BridgeStan.log_density_gradient(m, z)
     catch
         nan_on_error || rethrow()
         n = BridgeStan.param_unc_num(m)
@@ -75,8 +77,9 @@ function LogDensityProblems.logdensity_gradient_and_hessian(
     prob::StanProblem{M,nan_on_error}, x
 ) where {M,nan_on_error}
     m = prob.model
+    z = convert(Vector{Float64}, x)
     try
-        return BridgeStan.log_density_hessian(m, convert(Vector{Float64}, x))
+        return BridgeStan.log_density_hessian(m, z)
     catch
         nan_on_error || rethrow()
         n = BridgeStan.param_unc_num(m)

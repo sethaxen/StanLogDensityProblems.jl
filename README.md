@@ -13,7 +13,7 @@ For easily benchmarking inference algorithms, StanLogDensityProblems also integr
 For example, here we sample a Stan model from PosteriorDB using [DynamicHMC](https://www.tamaspapp.eu/DynamicHMC.jl):
 
 ```julia
-julia> using BridgeStan, DynamicHMC, PosteriorDB, Random, StanLogDensityProblems
+julia> using DynamicHMC, PosteriorDB, Random, StanLogDensityProblems
 
 julia> pdb = PosteriorDB.database()
 PosteriorDatabase(...)
@@ -27,4 +27,10 @@ StanProblem: dogs_model
 julia> rng = Random.default_rng();
 
 julia> result = mcmc_with_warmup(rng, prob, 1_000; reporter=NoProgressReport());
+
+julia> result.posterior_matrix
+3×1000 Matrix{Float64}:
+  1.27568    1.29648    1.32405   …   1.65451    1.3875     1.76917
+ -0.327308  -0.305644  -0.303549     -0.273245  -0.387199  -0.333485
+ -0.128237  -0.166094  -0.15898      -0.223369  -0.15062   -0.236186
 ```
