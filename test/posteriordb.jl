@@ -5,7 +5,7 @@ using Test
 
 @testset "PosteriorDB integration" begin
     pdb = PosteriorDB.database()
-    post = posterior(pdb, "dogs-dogs")
+    post = PosteriorDB.posterior(pdb, "dogs-dogs")
     @testset for nan_on_error in (false, true)
         path = mktempdir(; cleanup=false)
         prob = StanProblem(post, path; nan_on_error=nan_on_error)
