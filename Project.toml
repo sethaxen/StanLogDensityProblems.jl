@@ -17,7 +17,7 @@ PosteriorDBExt = "PosteriorDB"
 [compat]
 BridgeStan = "1"
 LogDensityProblems = "1, 2"
-PosteriorDB = "0.3.2"
+PosteriorDB = "0.3.2, 0.4"
 Requires = "0.5, 1"
 julia = "1.6"
 
