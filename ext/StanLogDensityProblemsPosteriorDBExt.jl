@@ -1,4 +1,4 @@
-module PosteriorDBExt
+module StanLogDensityProblemsPosteriorDBExt
 
 using StanLogDensityProblems: StanLogDensityProblems, EXTENSIONS_SUPPORTED
 

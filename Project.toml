@@ -1,7 +1,7 @@
 name = "StanLogDensityProblems"
 uuid = "a545de4d-8dba-46db-9d34-4e41d3f07807"
 authors = ["Seth Axen <seth@sethaxen.com> and contributors"]
-version = "0.1.2"
+version = "0.1.3"
 
 [deps]
 BridgeStan = "c88b6f0a-829e-4b0b-94b7-f06ab5908f5a"
@@ -12,7 +12,7 @@ Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 PosteriorDB = "1c4bc282-d2f5-44f9-b6d1-8c4424a23ad4"
 
 [extensions]
-PosteriorDBExt = "PosteriorDB"
+StanLogDensityProblemsPosteriorDBExt = "PosteriorDB"
 
 [compat]
 BridgeStan = "1"
