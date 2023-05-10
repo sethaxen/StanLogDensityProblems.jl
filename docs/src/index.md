@@ -10,6 +10,8 @@ For easily benchmarking inference algorithms, StanLogDensityProblems also integr
 ```@autodocs
 Modules = [
     StanLogDensityProblems,
-    isdefined(Base, :get_extension) ? Base.get_extension(StanLogDensityProblems, :PosteriorDBExt) : StanLogDensityProblems.PosteriorDBExt
+    isdefined(Base, :get_extension) ?
+        Base.get_extension(StanLogDensityProblems, :StanLogDensityProblemsPosteriorDBExt) :
+        StanLogDensityProblems.StanLogDensityProblemsPosteriorDBExt
 ]
 ```
