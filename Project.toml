@@ -8,18 +8,15 @@ BridgeStan = "c88b6f0a-829e-4b0b-94b7-f06ab5908f5a"
 LogDensityProblems = "6fdf6af0-433a-55f7-b3ed-c6c6e0b8df7c"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 
-[weakdeps]
-PosteriorDB = "1c4bc282-d2f5-44f9-b6d1-8c4424a23ad4"
-
-[extensions]
-StanLogDensityProblemsPosteriorDBExt = "PosteriorDB"
-
 [compat]
-BridgeStan = "1"
+BridgeStan = "1, 2"
 LogDensityProblems = "1, 2"
 PosteriorDB = "0.3.2, 0.4"
 Requires = "0.5, 1"
 julia = "1.6"
+
+[extensions]
+StanLogDensityProblemsPosteriorDBExt = "PosteriorDB"
 
 [extras]
 PosteriorDB = "1c4bc282-d2f5-44f9-b6d1-8c4424a23ad4"
@@ -27,3 +24,6 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["PosteriorDB", "Test"]
+
+[weakdeps]
+PosteriorDB = "1c4bc282-d2f5-44f9-b6d1-8c4424a23ad4"
