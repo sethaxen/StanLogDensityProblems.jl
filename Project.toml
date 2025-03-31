@@ -9,7 +9,7 @@ LogDensityProblems = "6fdf6af0-433a-55f7-b3ed-c6c6e0b8df7c"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 
 [compat]
-BridgeStan = "2"
+BridgeStan = "2.3.0"
 LogDensityProblems = "2.1.0"
 PosteriorDB = "0.3.2, 0.4, 0.5"
 Requires = "0.5, 1"
