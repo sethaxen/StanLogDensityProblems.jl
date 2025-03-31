@@ -29,8 +29,8 @@ Remaining `kwargs` are forwarded to
     By default, Stan does not compile the model with multithreading support. If this is
     needed, pass `make_args=["STAN_THREADS=true"]` to `kwargs`.
 """
-function StanProblem(stan_file::String, data::String; nan_on_error::Bool=false, kwargs...)
-    model = BridgeStan.StanModel(; stan_file, data, kwargs...)
+function StanProblem(args...; nan_on_error::Bool=false, kwargs...)
+    model = BridgeStan.StanModel(args...; kwargs...)
     return StanProblem(model; nan_on_error=nan_on_error)
 end
 
