@@ -15,14 +15,12 @@ struct StanProblem{M<:BridgeStan.StanModel,nan_on_error}
 end
 
 """
-    StanProblem(stan_file::String, data::String; nan_on_error::Bool=false, kwargs...)
+    StanProblem(lib::String[, data::String[ seed::Int]]; nan_on_error::Bool=false, kwargs...)
 
-Construct a `BridgeStan.StanModel` from a `.stan` file and wrap it as a `StanProblem`.
+Construct a `BridgeStan.StanModel` and wrap it as a `StanProblem`.
 
-`data` should either be a string containing a JSON string literal or a path to a data file
-ending in `.json`. If necessary, the model is compiled.
-
-Remaining `kwargs` are forwarded to
+`lib` is a path either to a compiled Stan model or to a `.stan` file. For details on the
+arguments, see the docstring for
 [`BridgeStan.StanModel`](https://roualdes.github.io/bridgestan/languages/julia.html#BridgeStan.StanModel).
 
 !!! note
