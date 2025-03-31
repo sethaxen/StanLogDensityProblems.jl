@@ -7,12 +7,14 @@ version = "0.1.7"
 BridgeStan = "c88b6f0a-829e-4b0b-94b7-f06ab5908f5a"
 LogDensityProblems = "6fdf6af0-433a-55f7-b3ed-c6c6e0b8df7c"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 
 [compat]
 BridgeStan = "2"
 LogDensityProblems = "2.1.0"
 PosteriorDB = "0.3.2, 0.4, 0.5"
 Requires = "0.5, 1"
+SHA = "0.7, 1"
 julia = "1.8"
 
 [extensions]
