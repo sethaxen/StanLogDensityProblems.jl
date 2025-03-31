@@ -14,7 +14,7 @@ end
 
 function get_test_model(name; kwargs...)
     stan_file, data = get_test_files(name)
-    return BridgeStan.StanModel(; stan_file, data, kwargs...)
+    return BridgeStan.StanModel(stan_file, data; kwargs...)
 end
 
 struct NonNumeric{T}
