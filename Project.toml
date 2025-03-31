@@ -1,7 +1,7 @@
 name = "StanLogDensityProblems"
 uuid = "a545de4d-8dba-46db-9d34-4e41d3f07807"
 authors = ["Seth Axen <seth@sethaxen.com> and contributors"]
-version = "0.1.6"
+version = "0.1.7"
 
 [deps]
 BridgeStan = "c88b6f0a-829e-4b0b-94b7-f06ab5908f5a"
@@ -9,8 +9,8 @@ LogDensityProblems = "6fdf6af0-433a-55f7-b3ed-c6c6e0b8df7c"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 
 [compat]
-BridgeStan = "1, 2"
-LogDensityProblems = "1, 2"
+BridgeStan = "2"
+LogDensityProblems = "2.1.0"
 PosteriorDB = "0.3.2, 0.4, 0.5"
 Requires = "0.5, 1"
 julia = "1.8"
