@@ -1,0 +1,8 @@
+# DocInventory version 1
+project = "BridgeStan.jl"
+version = "2.6.1"
+
+# NOTE: trimmed to just the API functions we link to
+[[jl.type]]
+name = "BridgeStan.StanModel"
+uri = "/languages/julia.html#$"

@@ -1,9 +1,17 @@
 using StanLogDensityProblems
 using Documenter
+using DocumenterInterLinks
 using PosteriorDB  # load extension
 
 DocMeta.setdocmeta!(
     StanLogDensityProblems, :DocTestSetup, :(using StanLogDensityProblems); recursive=true
+)
+
+links = InterLinks(
+    "BridgeStan" => (
+        "https://roualdes.github.io/bridgestan/latest/",
+        joinpath(@__DIR__, "inventories", "BridgeStan.toml"),
+    ),
 )
 
 makedocs(;
@@ -17,6 +25,7 @@ makedocs(;
         edit_link="main",
         assets=String[],
     ),
+    plugins=[links],
     pages=["Home" => "index.md"],
 )
 
