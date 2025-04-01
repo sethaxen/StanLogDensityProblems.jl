@@ -4,8 +4,10 @@ using StanLogDensityProblems: StanLogDensityProblems, EXTENSIONS_SUPPORTED
 
 if EXTENSIONS_SUPPORTED
     using PosteriorDB: PosteriorDB
+    using SHA: SHA
 else  # using Requires
     using ..PosteriorDB: PosteriorDB
+    using ..SHA: SHA
 end
 
 """
@@ -33,9 +35,13 @@ function StanLogDensityProblems.StanProblem(
     model = PosteriorDB.model(post)
     stan_file = PosteriorDB.path(PosteriorDB.implementation(model, "stan"))
     stan_file_new = joinpath(path, basename(stan_file))
-    cp(stan_file, stan_file_new; force=force)
+    if !isfile(stan_file_new) || _hash(stan_file_new) != _hash(stan_file)
+        cp(stan_file, stan_file_new; force=force)
+    end
     data = PosteriorDB.load(PosteriorDB.dataset(post), String)
     return StanLogDensityProblems.StanProblem(stan_file_new, data, args...; kwargs...)
 end
+
+_hash(file::AbstractString) = open(SHA.sha256, file; read=true)
 
 end  # module
