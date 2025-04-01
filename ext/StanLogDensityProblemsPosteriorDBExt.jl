@@ -4,11 +4,10 @@ using StanLogDensityProblems: StanLogDensityProblems, EXTENSIONS_SUPPORTED
 
 if EXTENSIONS_SUPPORTED
     using PosteriorDB: PosteriorDB
-    using SHA: SHA
 else  # using Requires
     using ..PosteriorDB: PosteriorDB
-    using ..SHA: SHA
 end
+using SHA: SHA
 
 """
     StanProblem(
