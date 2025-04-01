@@ -35,12 +35,14 @@ function StanLogDensityProblems.StanProblem(
     model = PosteriorDB.model(post)
     stan_file = PosteriorDB.path(PosteriorDB.implementation(model, "stan"))
     stan_file_new = joinpath(path, basename(stan_file))
-    if !isfile(stan_file_new) || _hash(stan_file_new) != _hash(stan_file)
+    if !isfile(stan_file_new) || !_is_file_identical(stan_file_new, stan_file)
         cp(stan_file, stan_file_new; force=force)
     end
     data = PosteriorDB.load(PosteriorDB.dataset(post), String)
     return StanLogDensityProblems.StanProblem(stan_file_new, data, args...; kwargs...)
 end
+
+_is_file_identical(f1::AbstractString, f2::AbstractString) = _hash(f1) == _hash(f2)
 
 _hash(file::AbstractString) = open(SHA.sha256, file; read=true)
 
