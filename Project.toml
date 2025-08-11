@@ -1,7 +1,7 @@
 name = "StanLogDensityProblems"
 uuid = "a545de4d-8dba-46db-9d34-4e41d3f07807"
 authors = ["Seth Axen <seth@sethaxen.com> and contributors"]
-version = "0.1.9"
+version = "0.1.10"
 
 [deps]
 BridgeStan = "c88b6f0a-829e-4b0b-94b7-f06ab5908f5a"
