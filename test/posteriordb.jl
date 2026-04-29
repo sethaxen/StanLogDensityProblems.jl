@@ -32,4 +32,14 @@ using Test
         prob3 = StanProblem(post, path; force=true, nan_on_error=nan_on_error)
         LogDensityProblems.logdensity(prob3, x)
     end
+
+    @testset "log_density_kwargs are forwarded" begin
+        path = mktempdir(; cleanup=false)
+        stan_file = joinpath(path, "dogs.stan")
+
+        prob1 = StanProblem(post, path)
+        @test prob1.log_density_kwargs == (;)
+        prob2 = StanProblem(post, path; log_density_kwargs=(propto=false,))
+        @test prob2.log_density_kwargs == (propto=false,)
+    end
 end
