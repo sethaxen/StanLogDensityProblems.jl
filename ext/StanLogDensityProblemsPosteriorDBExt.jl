@@ -30,8 +30,12 @@ otherwise, an error will be thrown.
 Remaining `args` and `kwargs` are forwarded to the main `StanProblem` constructor.
 """
 function StanLogDensityProblems.StanProblem(
-    post::PosteriorDB.Posterior, path::AbstractString, args...;
-    force::Bool=false, log_density_kwargs::NamedTuple=(;), kwargs...
+    post::PosteriorDB.Posterior,
+    path::AbstractString,
+    args...;
+    force::Bool=false,
+    log_density_kwargs::NamedTuple=(;),
+    kwargs...,
 )
     model = PosteriorDB.model(post)
     stan_file = PosteriorDB.path(PosteriorDB.implementation(model, "stan"))
@@ -40,7 +44,9 @@ function StanLogDensityProblems.StanProblem(
         cp(stan_file, stan_file_new; force=force)
     end
     data = PosteriorDB.load(PosteriorDB.dataset(post), String)
-    return StanLogDensityProblems.StanProblem(stan_file_new, data, args...; log_density_kwargs=log_density_kwargs, kwargs...)
+    return StanLogDensityProblems.StanProblem(
+        stan_file_new, data, args...; log_density_kwargs=log_density_kwargs, kwargs...
+    )
 end
 
 _is_file_identical(f1::AbstractString, f2::AbstractString) = _hash(f1) == _hash(f2)

@@ -20,7 +20,9 @@ for details.
 struct StanProblem{M<:BridgeStan.StanModel,nan_on_error,L<:NamedTuple}
     model::M
     log_density_kwargs::L
-    function StanProblem(model::M; nan_on_error::Bool=false, log_density_kwargs::L=(;)) where {M<:BridgeStan.StanModel,L<:NamedTuple}
+    function StanProblem(
+        model::M; nan_on_error::Bool=false, log_density_kwargs::L=(;)
+    ) where {M<:BridgeStan.StanModel,L<:NamedTuple}
         return new{M,nan_on_error,L}(model, log_density_kwargs)
     end
 end
@@ -37,9 +39,13 @@ arguments, see the docstring for [`BridgeStan.StanModel`](@extref).
     By default, Stan does not compile the model with multithreading support. If this is
     needed, pass `make_args=["STAN_THREADS=true"]` to `kwargs`.
 """
-function StanProblem(args...; nan_on_error::Bool=false, log_density_kwargs::NamedTuple=(;), kwargs...)
+function StanProblem(
+    args...; nan_on_error::Bool=false, log_density_kwargs::NamedTuple=(;), kwargs...
+)
     model = BridgeStan.StanModel(args...; kwargs...)
-    return StanProblem(model; nan_on_error=nan_on_error, log_density_kwargs=log_density_kwargs)
+    return StanProblem(
+        model; nan_on_error=nan_on_error, log_density_kwargs=log_density_kwargs
+    )
 end
 
 function Base.show(io::IO, ::MIME"text/plain", prob::StanProblem)

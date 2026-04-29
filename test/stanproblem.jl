@@ -119,9 +119,14 @@ end
             prob2 = StanProblem(model; log_density_kwargs=(propto=true,))
             x1 = randn(LogDensityProblems.dimension(prob))
             x2 = randn(LogDensityProblems.dimension(prob))
-            diff1 = LogDensityProblems.logdensity(prob, x1) - LogDensityProblems.logdensity(prob, x2)
-            diff2 = LogDensityProblems.logdensity(prob2, x1) - LogDensityProblems.logdensity(prob2, x2)
-            @test LogDensityProblems.logdensity(prob, x1) != LogDensityProblems.logdensity(prob2, x1)
+            diff1 =
+                LogDensityProblems.logdensity(prob, x1) -
+                LogDensityProblems.logdensity(prob, x2)
+            diff2 =
+                LogDensityProblems.logdensity(prob2, x1) -
+                LogDensityProblems.logdensity(prob2, x2)
+            @test LogDensityProblems.logdensity(prob, x1) !=
+                LogDensityProblems.logdensity(prob2, x1)
             @test isapprox(diff1, diff2)
         end
     end
