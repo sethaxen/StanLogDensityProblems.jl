@@ -1,16 +1,27 @@
 """
-    StanProblem(model::BridgeStan.StanModel; nan_on_error::Bool=false)
+    StanProblem(
+        model::BridgeStan.StanModel;
+        nan_on_error::Bool=false,
+        log_density_kwargs::NamedTuple=(;)
+    )
 
 A wrapper for an unconstrained Stan model with data, implementing the
 [LogDensityProblems](https://www.tamaspapp.eu/LogDensityProblems.jl/) interface.
 
 If `nan_on_error=true`, then any errors from Stan will be suppressed, and `NaN`s will be
 returned.
+
+`log_density_kwargs` is a `NamedTuple` of keyword arguments that is passed to BridgeStan's
+log-density functions. This can include the `propto` and `jacobian` keys. See e.g. the
+docstring for [`BridgeStan.log_density`](@extref),
+[BridgeStan.log_density_gradient](@extref), and [`BridgeStan.log_density_hessian`](@extref)
+for details.
 """
-struct StanProblem{M<:BridgeStan.StanModel,nan_on_error}
+struct StanProblem{M<:BridgeStan.StanModel,nan_on_error,L<:NamedTuple}
     model::M
-    function StanProblem(model::M; nan_on_error::Bool=false) where {M<:BridgeStan.StanModel}
-        return new{M,nan_on_error}(model)
+    log_density_kwargs::L
+    function StanProblem(model::M; nan_on_error::Bool=false, log_density_kwargs::L=(;)) where {M<:BridgeStan.StanModel,L<:NamedTuple}
+        return new{M,nan_on_error,L}(model, log_density_kwargs)
     end
 end
 
@@ -26,9 +37,9 @@ arguments, see the docstring for [`BridgeStan.StanModel`](@extref).
     By default, Stan does not compile the model with multithreading support. If this is
     needed, pass `make_args=["STAN_THREADS=true"]` to `kwargs`.
 """
-function StanProblem(args...; nan_on_error::Bool=false, kwargs...)
+function StanProblem(args...; nan_on_error::Bool=false, log_density_kwargs::NamedTuple=(;), kwargs...)
     model = BridgeStan.StanModel(args...; kwargs...)
-    return StanProblem(model; nan_on_error=nan_on_error)
+    return StanProblem(model; nan_on_error=nan_on_error, log_density_kwargs=log_density_kwargs)
 end
 
 function Base.show(io::IO, ::MIME"text/plain", prob::StanProblem)
@@ -49,7 +60,7 @@ function LogDensityProblems.logdensity(
     m = prob.model
     z = convert(Vector{Float64}, x)
     try
-        return BridgeStan.log_density(m, z)
+        return BridgeStan.log_density(m, z; prob.log_density_kwargs...)
     catch
         nan_on_error || rethrow()
         return NaN
@@ -62,7 +73,7 @@ function LogDensityProblems.logdensity_and_gradient(
     m = prob.model
     z = convert(Vector{Float64}, x)
     try
-        return BridgeStan.log_density_gradient(m, z)
+        return BridgeStan.log_density_gradient(m, z; prob.log_density_kwargs...)
     catch
         nan_on_error || rethrow()
         n = BridgeStan.param_unc_num(m)
@@ -76,7 +87,7 @@ function LogDensityProblems.logdensity_gradient_and_hessian(
     m = prob.model
     z = convert(Vector{Float64}, x)
     try
-        return BridgeStan.log_density_hessian(m, z)
+        return BridgeStan.log_density_hessian(m, z; prob.log_density_kwargs...)
     catch
         nan_on_error || rethrow()
         n = BridgeStan.param_unc_num(m)
