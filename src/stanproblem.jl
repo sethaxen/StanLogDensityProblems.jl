@@ -14,7 +14,7 @@ returned.
 `log_density_kwargs` is a `NamedTuple` of keyword arguments that is passed to BridgeStan's
 log-density functions. This can include the `propto` and `jacobian` keys. See e.g. the
 docstring for [`BridgeStan.log_density`](@extref),
-[BridgeStan.log_density_gradient](@extref), and [`BridgeStan.log_density_hessian`](@extref)
+[`BridgeStan.log_density_gradient`](@extref), and [`BridgeStan.log_density_hessian`](@extref)
 for details.
 """
 struct StanProblem{M<:BridgeStan.StanModel,nan_on_error,L<:NamedTuple}
