@@ -6,3 +6,15 @@ version = "2.6.1"
 [[jl.type]]
 name = "BridgeStan.StanModel"
 uri = "/languages/julia.html#$"
+
+[[jl.function]]
+name = "BridgeStan.log_density"
+uri = "/languages/julia.html#$"
+
+[[jl.function]]
+name = "BridgeStan.log_density_gradient"
+uri = "/languages/julia.html#$"
+
+[[jl.function]]
+name = "BridgeStan.log_density_hessian"
+uri = "/languages/julia.html#$"
