@@ -3,3 +3,9 @@ Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 DocumenterInterLinks = "d12716ef-a0f6-4df4-a9f1-a5a34e75c656"
 PosteriorDB = "1c4bc282-d2f5-44f9-b6d1-8c4424a23ad4"
 StanLogDensityProblems = "a545de4d-8dba-46db-9d34-4e41d3f07807"
+
+[compat]
+Documenter = "1.17.0"
+DocumenterInterLinks = "1.1.0"
+PosteriorDB = "0.6.0"
+StanLogDensityProblems = "0.1.10"
