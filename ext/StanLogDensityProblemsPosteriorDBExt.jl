@@ -1,12 +1,7 @@
 module StanLogDensityProblemsPosteriorDBExt
 
-using StanLogDensityProblems: StanLogDensityProblems, EXTENSIONS_SUPPORTED
-
-if EXTENSIONS_SUPPORTED
-    using PosteriorDB: PosteriorDB
-else  # using Requires
-    using ..PosteriorDB: PosteriorDB
-end
+using StanLogDensityProblems: StanLogDensityProblems
+using PosteriorDB: PosteriorDB
 using SHA: SHA
 
 """
