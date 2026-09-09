@@ -10,5 +10,5 @@ StanLogDensityProblems = {path = ".."}
 [compat]
 Documenter = "1.17.0"
 DocumenterInterLinks = "1.1.0"
-PosteriorDB = "0.6.0"
+PosteriorDB = "0.6.0, 0.7"
 StanLogDensityProblems = "0.1.10"

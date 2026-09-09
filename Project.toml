@@ -1,7 +1,7 @@
 name = "StanLogDensityProblems"
 uuid = "a545de4d-8dba-46db-9d34-4e41d3f07807"
 authors = ["Seth Axen <seth@sethaxen.com> and contributors"]
-version = "0.1.12"
+version = "0.1.13"
 
 [workspace]
 projects = ["docs", "test"]
@@ -20,6 +20,6 @@ StanLogDensityProblemsPosteriorDBExt = ["PosteriorDB", "SHA"]
 [compat]
 BridgeStan = "2.3.0"
 LogDensityProblems = "2.1.0"
-PosteriorDB = "0.5, 0.6"
+PosteriorDB = "0.5, 0.6, 0.7"
 SHA = "0.7"
 julia = "1.9"
