@@ -7,5 +7,5 @@ StanLogDensityProblems = "a545de4d-8dba-46db-9d34-4e41d3f07807"
 [compat]
 Documenter = "1.17.0"
 DocumenterInterLinks = "1.1.0"
-PosteriorDB = "0.6.0"
+PosteriorDB = "0.6.0, 0.7"
 StanLogDensityProblems = "0.1.10"
