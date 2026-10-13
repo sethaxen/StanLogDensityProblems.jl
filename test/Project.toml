@@ -11,6 +11,6 @@ StanLogDensityProblems = {path = ".."}
 [compat]
 BridgeStan = "2.3.0"
 LogDensityProblems = "2.1.0"
-PosteriorDB = "0.5, 0.6"
+PosteriorDB = "0.5, 0.6, 0.7"
 StanLogDensityProblems = "0.1.11"
 Test = "1"
